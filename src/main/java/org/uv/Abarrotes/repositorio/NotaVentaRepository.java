@@ -5,6 +5,7 @@
 package org.uv.Abarrotes.repositorio;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.uv.Abarrotes.modelos.NotaVenta;
 
 /**
@@ -12,5 +13,8 @@ import org.uv.Abarrotes.modelos.NotaVenta;
  * @author loken
  */
 public interface NotaVentaRepository extends JpaRepository<NotaVenta, Long> {
-    
+
+    // Consulta para encontrar el máximo número de nota
+    @Query("SELECT MAX(n.numeroNota) FROM NotaVenta n")
+    Long findMaxNumeroNota();
 }

@@ -65,7 +65,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<DTOCategoria> eliminarCategoria(@PathVariable Long id){
+    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id){
         boolean eliminada= categoriaService.eliminarCategoria(id);
         return eliminada ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
