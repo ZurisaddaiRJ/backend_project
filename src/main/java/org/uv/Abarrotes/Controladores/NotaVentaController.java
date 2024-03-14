@@ -22,17 +22,22 @@ import org.uv.Abarrotes.DTOs.Entradas.DTOPago;
 import org.uv.Abarrotes.DTOs.DTOVenta;
 import org.uv.Abarrotes.modelos.NotaVenta;
 import org.uv.Abarrotes.servicio.NotaVentaService;
+import org.uv.Abarrotes.servicio.PedidoServicio;
+
 /**
  *
  * @author yacruz
  */
 @Controller
 @RequestMapping("api/notasventas")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins = "*", allowCredentials = "")
 public class NotaVentaController {
+
     @Autowired
     private NotaVentaService notaventaService;
- 
+
+    @Autowired
+    private PedidoServicio pedidoService;
 
     //postmapping para crear una nota de venta con metdo limpio
     @PostMapping("/crearlimpio")
@@ -42,24 +47,33 @@ public class NotaVentaController {
             return new ResponseEntity<>("Nota de venta creada con éxito", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        } 
+        }
     }
-    
+
     @GetMapping
-    public ResponseEntity<List<DTOVenta>> obtenerNotasVentas(){
+    public ResponseEntity<List<DTOVenta>> obtenerNotasVentas() {
         List<DTOVenta> notasventas = notaventaService.obtenerNotasVentas();
         return ResponseEntity.ok(notasventas);
     }
 
+    @GetMapping("/lastNoteNumber")
+    public ResponseEntity<Long> findMaxNumeroNota() {
+        try {
+            Long maxNumeroNota = pedidoService.obtenerUltimoNumeroNota();
+            return ResponseEntity.ok(maxNumeroNota);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DTOVenta> obtenerNotasVentasPorId(@PathVariable Long id){
+    public ResponseEntity<DTOVenta> obtenerNotasVentasPorId(@PathVariable Long id) {
         DTOVenta notasventas = notaventaService.obtenerNotaVentaPorId(id);
         return ResponseEntity.ok(notasventas);
     }
-    
+
     @PutMapping("/{id}")
-    public ResponseEntity<DTONotaVenta> actualizarNotaVenta(@PathVariable Long id,@Valid @RequestBody NotaVenta notaventaActualizado) {
+    public ResponseEntity<DTONotaVenta> actualizarNotaVenta(@PathVariable Long id, @Valid @RequestBody NotaVenta notaventaActualizado) {
         DTONotaVenta notaventa = notaventaService.actualizarNotaVenta(id, notaventaActualizado);
         return ResponseEntity.ok(notaventa);
     }
@@ -76,6 +90,6 @@ public class NotaVentaController {
             return new ResponseEntity<>(notaventaService.PagarNotaVenta(pago), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        } 
+        }
     }
 }
