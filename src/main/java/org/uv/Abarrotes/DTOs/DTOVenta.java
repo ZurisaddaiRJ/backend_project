@@ -26,9 +26,6 @@ public class DTOVenta {
     //datos de empleado
     private String nombreEmpleado;
 
-    //datos de departamento
-    private String nombredepartamento;
-
     //datos de detalle pedido
     private Date fechaEntrega;
     private Time horaEntrega;
@@ -51,9 +48,7 @@ public class DTOVenta {
         this.estadoPago = notaVenta.getAnticipo().getEstadoPago().getEstado();
         this.nombreCliente = notaVenta.getCliente().getNombre();
         this.nombreEmpleado = notaVenta.getEmpleado().getNombre();
-        this.nombredepartamento = notaVenta.getDepartamento().getNombre();
         this.fechaEntrega = notaVenta.getDetallePedido().getFechaEntrega();
-        this.horaEntrega = notaVenta.getDetallePedido().getHoraEntrega();
         this.estadoPedido = notaVenta.getDetallePedido().getEstadoPedido().getEstado();
         //detalle venta
         this.detalleVenta = obtenerDetallesVentas(notaVenta.getDetalleVenta());
@@ -121,14 +116,6 @@ public class DTOVenta {
 
     public void setNombreEmpleado(String nombreEmpleado) {
         this.nombreEmpleado = nombreEmpleado;
-    }
-
-    public String getNombredepartamento() {
-        return nombredepartamento;
-    }
-
-    public void setNombredepartamento(String nombredepartamento) {
-        this.nombredepartamento = nombredepartamento;
     }
 
     public Date getFechaEntrega() {

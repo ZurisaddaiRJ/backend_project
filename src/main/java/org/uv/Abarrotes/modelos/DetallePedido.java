@@ -38,17 +38,17 @@ public class DetallePedido implements Serializable {
     @Column(name = "fecha_entrega")
     private Date fechaEntrega;
 
-    @NotNull(message = "La hora de entrega no puede ser nula")
-    @Column(name = "hora_entrega")
-    private Time horaEntrega;
+//    @NotNull(message = "La hora de entrega no puede ser nula")
+//    @Column(name = "hora_entrega")
+//    private Time horaEntrega;
 
-    @Column(name = "fecha_recoger")
-    @JsonIgnore
-    private Date fechaRecoger;
-
-    @Column(name = "hora_recoger")
-    @JsonIgnore
-    private Time horaRecoger;
+//    @Column(name = "fecha_recoger")
+//    @JsonIgnore
+//    private Date fechaRecoger;
+//
+//    @Column(name = "hora_recoger")
+//    @JsonIgnore
+//    private Time horaRecoger;
 
     @NotNull(message = "El estado del pedido no puede ser nulo")
     @ManyToOne(cascade = CascadeType.ALL)
@@ -58,20 +58,18 @@ public class DetallePedido implements Serializable {
     @OneToMany(mappedBy = "detallePedido")
     private List<NotaVenta> notaVentas;
 
-    public DetallePedido(Long idDetallePedido, Date fechaEntrega, Time horaEntrega, Date fechaRecoger, Time horaRecoger, EstadosPedido estadoPedido, List<NotaVenta> notaVentas) {
+    public DetallePedido(Long idDetallePedido, Date fechaEntrega, EstadosPedido estadoPedido, List<NotaVenta> notaVentas) {
         this.idDetallePedido = idDetallePedido;
         this.fechaEntrega = fechaEntrega;
-        this.horaEntrega = horaEntrega;
-        this.fechaRecoger = fechaRecoger;
-        this.horaRecoger = horaRecoger;
+//        this.horaEntrega = horaEntrega;
+//        this.fechaRecoger = fechaRecoger;
+//        this.horaRecoger = horaRecoger;
         this.estadoPedido = estadoPedido;
         this.notaVentas = notaVentas;
     }
 
     public DetallePedido() {
-        // Establecer valores predeterminados para fechaRecoger y horaRecoger
-        this.fechaRecoger = new java.sql.Date(System.currentTimeMillis()); // Fecha actual como valor predeterminado
-        this.horaRecoger = Time.valueOf("12:00:00"); // 12:00 PM como valor predeterminado
+
     }
 
 
@@ -91,29 +89,29 @@ public class DetallePedido implements Serializable {
         this.fechaEntrega = fechaEntrega;
     }
 
-    public Time getHoraEntrega() {
-        return horaEntrega;
-    }
-
-    public void setHoraEntrega(Time horaEntrega) {
-        this.horaEntrega = horaEntrega;
-    }
-
-    public Date getFechaRecoger() {
-        return fechaRecoger;
-    }
-
-    public void setFechaRecoger(Date fechaRecoger) {
-        this.fechaRecoger = fechaRecoger;
-    }
-    
-    public Time getHoraRecoger() {
-        return horaRecoger;
-    }
-
-    public void setHoraRecoger(Time horaRecoger) {
-        this.horaRecoger = horaRecoger;
-    }
+//    public Time getHoraEntrega() {
+//        return horaEntrega;
+//    }
+//
+//    public void setHoraEntrega(Time horaEntrega) {
+//        this.horaEntrega = horaEntrega;
+//    }
+//
+//    public Date getFechaRecoger() {
+//        return fechaRecoger;
+//    }
+//
+//    public void setFechaRecoger(Date fechaRecoger) {
+//        this.fechaRecoger = fechaRecoger;
+//    }
+//    
+//    public Time getHoraRecoger() {
+//        return horaRecoger;
+//    }
+//
+//    public void setHoraRecoger(Time horaRecoger) {
+//        this.horaRecoger = horaRecoger;
+//    }
 
     public EstadosPedido getEstadoPedido() {
         return estadoPedido;

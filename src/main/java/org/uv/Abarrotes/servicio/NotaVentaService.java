@@ -19,7 +19,6 @@ import org.uv.Abarrotes.DTOs.Entradas.DTOPago;
 import org.uv.Abarrotes.DTOs.DTOVenta;
 import org.uv.Abarrotes.modelos.Anticipo;
 import org.uv.Abarrotes.modelos.Cliente;
-import org.uv.Abarrotes.modelos.Departamento;
 import org.uv.Abarrotes.modelos.DetallePedido;
 import org.uv.Abarrotes.modelos.DetalleVenta;
 import org.uv.Abarrotes.modelos.Empleado;
@@ -29,7 +28,6 @@ import org.uv.Abarrotes.modelos.NotaVenta;
 import org.uv.Abarrotes.modelos.Producto;
 import org.uv.Abarrotes.repositorio.AnticipoRepository;
 import org.uv.Abarrotes.repositorio.ClienteRepository;
-import org.uv.Abarrotes.repositorio.DepartamentoRepository;
 import org.uv.Abarrotes.repositorio.DetallePedidoRepository;
 import org.uv.Abarrotes.repositorio.DetalleVentaRepository;
 import org.uv.Abarrotes.repositorio.EmpleadoRepository;
@@ -60,9 +58,6 @@ public class NotaVentaService {
     
     @Autowired
     private EmpleadoRepository empleadoRepository;
-    
-    @Autowired
-    private DepartamentoRepository departamentoRepository;
     
     @Autowired
     private DetallePedidoRepository detallepedidoRepository;
@@ -106,7 +101,6 @@ public class NotaVentaService {
         notaventaExistente.setAnticipo(notaventaActualizada.getAnticipo());
         notaventaExistente.setCliente(notaventaActualizada.getCliente());
         notaventaExistente.setEmpleado(notaventaActualizada.getEmpleado());
-        notaventaExistente.setDepartamento(notaventaActualizada.getDepartamento());
         notaventaExistente.setDetallePedido(notaventaActualizada.getDetallePedido());
 
         // Save the updated sale
@@ -130,7 +124,7 @@ public class NotaVentaService {
         Time hora = new Time(System.currentTimeMillis());
     
         Anticipo anticipo = crearAnticipo(notaventa, fecha);
-        DetallePedido detallePedido = crearDetallePedido(fecha, hora);
+        DetallePedido detallePedido = crearDetallePedido(fecha);
         NotaVenta notaVenta = crearNotaDeVenta(notaventa, fecha, anticipo, detallePedido);
         crearDetalleVenta(notaventa, fecha, notaVenta);
     
@@ -150,10 +144,10 @@ public class NotaVentaService {
         return anticipoRepository.save(anticipo);
     }
 
-    private DetallePedido crearDetallePedido(Date fecha, Time hora){
+    private DetallePedido crearDetallePedido(Date fecha){
         DetallePedido detallePedido = new DetallePedido();
         detallePedido.setFechaEntrega(fecha);
-        detallePedido.setHoraEntrega(hora);
+//        detallePedido.setHoraEntrega(hora);
         EstadosPedido estadoPedido = estadosPedidoRepository.findById(2L).orElseThrow(() -> new EntityNotFoundException("Estado de pedido no encontrado"));
         detallePedido.setEstadoPedido(estadoPedido);
         return detallepedidoRepository.save(detallePedido);
@@ -163,14 +157,12 @@ public class NotaVentaService {
         NotaVenta notaVenta = new NotaVenta();
         Cliente cliente = clienteRepository.findById(notaventa.getCliente().getIdCliente()).orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado"));
         Empleado empleado = empleadoRepository.findById(notaventa.getEmpleado().getIdEmpleado()).orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
-        Departamento departamento = departamentoRepository.findById(notaventa.getDepartamento().getIdDepartamento()).orElseThrow(() -> new EntityNotFoundException("Departamento no encontrado"));
         
         notaVenta.setFecha(fecha);
         notaVenta.setTotal(notaventa.getTotal());
         notaVenta.setAnticipo(anticipo);
         notaVenta.setCliente(cliente);
         notaVenta.setEmpleado(empleado);
-        notaVenta.setDepartamento(departamento);
         notaVenta.setDetallePedido(detallePedido);
         return notaventaRepository.save(notaVenta);
     }

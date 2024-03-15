@@ -31,9 +31,6 @@ public class DTONotaVenta {
     @NotNull(message = "El empleado no puede ser nulo")
     private Long empleado;
 
-    @NotNull(message = "El departamento no puede ser nulo")
-    private Long departamento;
-
     @NotNull(message = "El detalle de pedido no puede ser nulo")
     private Long detallepedido;
     
@@ -42,14 +39,13 @@ public class DTONotaVenta {
     }
     
     public DTONotaVenta(Long numeroNota, Date fecha, BigDecimal total, Long anticipo, Long cliente, 
-            Long empleado, Long departamento, Long detallepedido){
+            Long empleado, Long detallepedido){
         this.numeroNota = numeroNota;
         this.fecha = fecha;
         this.total = total;
         this.anticipo = anticipo;
         this.cliente = cliente;
         this.empleado = empleado;
-        this.departamento = departamento;
         this.detallepedido = detallepedido;
     }
     
@@ -60,7 +56,6 @@ public class DTONotaVenta {
         this.anticipo = notaventa.getAnticipo().getIdAnticipo();
         this.cliente = notaventa.getCliente().getIdCliente();
         this.empleado = notaventa.getEmpleado().getIdEmpleado();
-        this.departamento = notaventa.getDepartamento().getIdDepartamento();
         this.detallepedido = notaventa.getDetallePedido().getIdDetallePedido();
     }
 
@@ -110,14 +105,6 @@ public class DTONotaVenta {
 
     public void setEmpleado(Long empleado) {
         this.empleado = empleado;
-    }
-
-    public Long getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Long departamento) {
-        this.departamento = departamento;
     }
 
     public Long getDetallepedido() {
