@@ -101,7 +101,7 @@ public class PedidoServicio {
     private DetallePedido CrearDetallePedido(NotaVenta nota) {
         DetallePedido nuevoDetallePedido = new DetallePedido();
         nuevoDetallePedido.setFechaEntrega(nota.getDetallePedido().getFechaEntrega());
-        EstadosPedido estadoPedido = estadosPedidoRepository.findById(1L).orElseThrow(() -> new EntityNotFoundException("Estado de pedido no encontrado"));
+        EstadosPedido estadoPedido = estadosPedidoRepository.findById(2L).orElseThrow(() -> new EntityNotFoundException("Estado de pedido no encontrado")); 
         nuevoDetallePedido.setEstadoPedido(estadoPedido);
         return detallepedidoRepository.save(nuevoDetallePedido);
     }
@@ -210,7 +210,7 @@ public class PedidoServicio {
         //obtener detalle de pedido
         DetallePedido detallePedido = detallepedidoRepository.findById(notaVenta.getDetallePedido().getIdDetallePedido()).orElseThrow(()
                 -> new EntityNotFoundException("Detalle de pedido no encontrado"));
-        EstadosPedido estado = estadosPedidoRepository.findById(3L).orElseThrow(()
+        EstadosPedido estado = estadosPedidoRepository.findById(1L).orElseThrow(()
                 -> new EntityNotFoundException("Estado de pedido no encontrado"));
 
         detallePedido.setEstadoPedido(estado);
