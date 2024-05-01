@@ -18,7 +18,7 @@ import org.uv.Abarrotes.servicio.PedidoServicio;
 
 @Controller
 @RequestMapping("api/pedido")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins = "*", allowCredentials = "")
 public class PedidoController {
 
     @Autowired
@@ -33,9 +33,10 @@ public class PedidoController {
             pedidoServicio.CrearPedido(notaVenta);
             return new ResponseEntity<>("Pedido creado con éxito", HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
+            //return new ResponseEntity<>("Error al crear el pedido: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
     }
 
     @PostMapping("/modificarpedido")
@@ -45,7 +46,7 @@ public class PedidoController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
+
     }
 
     @PostMapping("/pagarentregarpedido")
@@ -61,7 +62,7 @@ public class PedidoController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
+
     }
 
 }

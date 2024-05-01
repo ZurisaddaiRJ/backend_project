@@ -55,7 +55,7 @@ public class NotaVenta {
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     private Empleado empleado;
 
-    @NotNull(message = "El departamento no puede ser nulo")
+//    @NotNull(message = "El departamento no puede ser nulo")
     @ManyToOne
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
     private Departamento departamento;

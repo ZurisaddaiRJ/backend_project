@@ -38,7 +38,7 @@ public class DetallePedido implements Serializable {
     @Column(name = "fecha_entrega")
     private Date fechaEntrega;
 
-    @NotNull(message = "La hora de entrega no puede ser nula")
+//    @NotNull(message = "La hora de entrega no puede ser nula")
     @Column(name = "hora_entrega")
     private Time horaEntrega;
 

@@ -31,7 +31,7 @@ public class DetallePedidoService {
                 .orElseThrow(() -> new RuntimeException("Estado no encontrado"));
 
         detallePedidoEncontrado.setFechaEntrega(detallePedido.getFechaEntrega());
-        detallePedidoEncontrado.setHoraEntrega(detallePedido.getHoraEntrega());
+        detallePedidoEncontrado.setHoraEntrega(null);
         detallePedidoEncontrado.setEstadoPedido(estado);
 
         return new DTODetallePedido(detallePedidoRepository.save(detallePedidoEncontrado));

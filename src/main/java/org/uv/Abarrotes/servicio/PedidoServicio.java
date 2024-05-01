@@ -118,7 +118,7 @@ public class PedidoServicio {
         nuevaNotaVenta.setAnticipo(anticipo);
         nuevaNotaVenta.setCliente(clienteRepository.findById(notaventa.getCliente().getIdCliente()).orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado")));
         nuevaNotaVenta.setEmpleado(empleadoRepository.findById(notaventa.getEmpleado().getIdEmpleado()).orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado")));
-        nuevaNotaVenta.setDepartamento(departamentoRepository.findById(notaventa.getDepartamento().getIdDepartamento()).orElseThrow(() -> new EntityNotFoundException("Departamento no encontrado")));
+//        nuevaNotaVenta.setDepartamento(departamentoRepository.findById(notaventa.getDepartamento().getIdDepartamento()).orElseThrow(() -> new EntityNotFoundException("Departamento no encontrado")));
         nuevaNotaVenta.setDetallePedido(CrearDetallePedido(notaventa));
         return notaventaRepository.save(nuevaNotaVenta);
     }
