@@ -113,7 +113,7 @@ public class EmpleadoService {
         return dto;
     }
 
-    public DTOEmpleadoInfo actualizarEmpleado(Long idEmpleado,@Valid  Empleado empleadoActualizado) {
+    public DTOEmpleadoInfo actualizarEmpleado(Long idEmpleado, @Valid Empleado empleadoActualizado) {
         Empleado empleadoExistente = empleadoRepository.findById(idEmpleado)
                 .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
 
@@ -160,22 +160,22 @@ public class EmpleadoService {
 
     public void init() {
         // Verificar si ya existen empleados en la base de datos
-        if (empleadoRepository.findByNombre("Maria del Carmen")==null) {
+        if (empleadoRepository.findByNombre("Maria del Carmen") == null) {
             // Si no hay empleados, crea dos empleados por defecto (jefe y gerente)
-            // Crear el rol "Gerente"
-            Rol rolEncDepart = new Rol();
-            rolEncDepart.setCve("ENC_DEP");
-            rolEncDepart.setDescripcion("Encargado_Departamento");
-            rolRepository.save(rolEncDepart);
+            // Crear el rol "Supervisor de Ventas"
+            Rol rolSupVent = new Rol();
+            rolSupVent.setCve("SUPERVISOR DE VENTAS");
+            rolSupVent.setDescripcion("Supervisor de Ventas");
+            rolRepository.save(rolSupVent);
 
-            // Crear el empleado "Gerente" con contraseña "gerente123"
-            Empleado empleadoEncDepart = new Empleado();
-            empleadoEncDepart.setNombre("Maria del Carmen");
-            empleadoEncDepart.setApellidos("Rodriguez Gutierrez");
-            empleadoEncDepart.setContrasenia("jefe123"); // ¡Recuerda hashear la contraseña en un entorno de producción!
-            empleadoEncDepart.setCorreoElectronico("mariadelcarmen@gmail.com");
-            empleadoEncDepart.setRoles(rolEncDepart);
-            empleadoRepository.save(empleadoEncDepart);
+            // Crear el empleado "Supervisor de Ventas" con contraseña "jefe123"
+            Empleado empleadoSupVent = new Empleado();
+            empleadoSupVent.setNombre("Maria del Carmen");
+            empleadoSupVent.setApellidos("Rodriguez Gutierrez");
+            empleadoSupVent.setContrasenia("jefe123");
+            empleadoSupVent.setCorreoElectronico("mariadelcarmen@gmail.com");
+            empleadoSupVent.setRoles(rolSupVent);
+            empleadoRepository.save(empleadoSupVent);
 
         }
     }
