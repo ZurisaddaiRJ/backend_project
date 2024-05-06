@@ -22,7 +22,6 @@ import org.uv.Abarrotes.modelos.NotaVenta;
 import org.uv.Abarrotes.modelos.Producto;
 import org.uv.Abarrotes.repositorio.AnticipoRepository;
 import org.uv.Abarrotes.repositorio.ClienteRepository;
-import org.uv.Abarrotes.repositorio.DepartamentoRepository;
 import org.uv.Abarrotes.repositorio.DetallePedidoRepository;
 import org.uv.Abarrotes.repositorio.DetalleVentaRepository;
 import org.uv.Abarrotes.repositorio.EmpleadoRepository;
@@ -52,9 +51,6 @@ public class PedidoServicio {
 
     @Autowired
     private EmpleadoRepository empleadoRepository;
-
-    @Autowired
-    private DepartamentoRepository departamentoRepository;
 
     @Autowired
     private DetallePedidoRepository detallepedidoRepository;
@@ -105,8 +101,7 @@ public class PedidoServicio {
     private DetallePedido CrearDetallePedido(NotaVenta nota) {
         DetallePedido nuevoDetallePedido = new DetallePedido();
         nuevoDetallePedido.setFechaEntrega(nota.getDetallePedido().getFechaEntrega());
-        nuevoDetallePedido.setHoraEntrega(nota.getDetallePedido().getHoraEntrega());
-        EstadosPedido estadoPedido = estadosPedidoRepository.findById(1L).orElseThrow(() -> new EntityNotFoundException("Estado de pedido no encontrado"));
+        EstadosPedido estadoPedido = estadosPedidoRepository.findById(2L).orElseThrow(() -> new EntityNotFoundException("Estado de pedido no encontrado")); 
         nuevoDetallePedido.setEstadoPedido(estadoPedido);
         return detallepedidoRepository.save(nuevoDetallePedido);
     }
@@ -118,7 +113,6 @@ public class PedidoServicio {
         nuevaNotaVenta.setAnticipo(anticipo);
         nuevaNotaVenta.setCliente(clienteRepository.findById(notaventa.getCliente().getIdCliente()).orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado")));
         nuevaNotaVenta.setEmpleado(empleadoRepository.findById(notaventa.getEmpleado().getIdEmpleado()).orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado")));
-        nuevaNotaVenta.setDepartamento(departamentoRepository.findById(notaventa.getDepartamento().getIdDepartamento()).orElseThrow(() -> new EntityNotFoundException("Departamento no encontrado")));
         nuevaNotaVenta.setDetallePedido(CrearDetallePedido(notaventa));
         return notaventaRepository.save(nuevaNotaVenta);
     }
@@ -216,7 +210,7 @@ public class PedidoServicio {
         //obtener detalle de pedido
         DetallePedido detallePedido = detallepedidoRepository.findById(notaVenta.getDetallePedido().getIdDetallePedido()).orElseThrow(()
                 -> new EntityNotFoundException("Detalle de pedido no encontrado"));
-        EstadosPedido estado = estadosPedidoRepository.findById(3L).orElseThrow(()
+        EstadosPedido estado = estadosPedidoRepository.findById(1L).orElseThrow(()
                 -> new EntityNotFoundException("Estado de pedido no encontrado"));
 
         detallePedido.setEstadoPedido(estado);

@@ -31,7 +31,6 @@ public class VistaNotaVentaPagada {
     private String nombreCompletoEmpleado;
     private Date fechaNota;
     private BigDecimal total;
-    private String nombreDepartamento;
 
     public Long getNumeroNota() {
         return numeroNota;
@@ -121,12 +120,4 @@ public class VistaNotaVentaPagada {
         this.total = total;
     }
 
-    public String getNombreDepartamento() {
-        return nombreDepartamento;
-    }
-
-    public void setNombreDepartamento(String nombreDepartamento) {
-        this.nombreDepartamento = nombreDepartamento;
-    }
-    
 }

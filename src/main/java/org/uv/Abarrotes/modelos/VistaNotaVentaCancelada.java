@@ -29,7 +29,6 @@ public class VistaNotaVentaCancelada {
     private String nombreCompletoEmpleado;
     private Date fechaNota;
     private BigDecimal total;
-    private String nombreDepartamento;
 
     public Long getNumeroNota() {
         return numeroNota;
@@ -117,14 +116,6 @@ public class VistaNotaVentaCancelada {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
-    }
-
-    public String getNombreDepartamento() {
-        return nombreDepartamento;
-    }
-
-    public void setNombreDepartamento(String nombreDepartamento) {
-        this.nombreDepartamento = nombreDepartamento;
     }
     
 }

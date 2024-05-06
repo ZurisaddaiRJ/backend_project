@@ -55,11 +55,6 @@ public class NotaVenta {
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_empleado")
     private Empleado empleado;
 
-    @NotNull(message = "El departamento no puede ser nulo")
-    @ManyToOne
-    @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento")
-    private Departamento departamento;
-
     @OneToOne
     @JoinColumn(name = "id_detalle_pedido", unique = true, referencedColumnName = "id_detalle_pedido")
     private DetallePedido detallePedido;
@@ -67,14 +62,13 @@ public class NotaVenta {
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<DetalleVenta> detalleVenta;
 
-    public NotaVenta(Long numeroNota, Date fecha, BigDecimal total, Anticipo anticipo, Cliente cliente, Empleado empleado, Departamento departamento, DetallePedido detallePedido, List<DetalleVenta> detalleVenta) {
+    public NotaVenta(Long numeroNota, Date fecha, BigDecimal total, Anticipo anticipo, Cliente cliente, Empleado empleado, DetallePedido detallePedido, List<DetalleVenta> detalleVenta) {
         this.numeroNota = numeroNota;
         this.fecha = fecha;
         this.total = total;
         this.anticipo = anticipo;
         this.cliente = cliente;
         this.empleado = empleado;
-        this.departamento = departamento;
         this.detallePedido = detallePedido;
         this.detalleVenta = detalleVenta;
     }
@@ -128,14 +122,6 @@ public class NotaVenta {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
     }
 
     public DetallePedido getDetallePedido() {
