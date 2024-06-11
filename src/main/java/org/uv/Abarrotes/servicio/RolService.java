@@ -87,14 +87,5 @@ public class RolService {
             // Guardar el rol "Vendedor" en la base de datos
             rolRepository.save(rolVendedor);
         }
-
-        // Verificar si el rol "Supervisor de Ventas" ya existe
-        if (!rolRepository.existsByDescripcion("Supervisor de Ventas")) {
-            // Crear objeto Rol para "Supervisor de Ventas"
-            Rol rolSupVent = new Rol("SUPERVISOR DE VENTAS", "Supervisor de Ventas");
-
-            // Guardar el rol "Supervisor de Ventas" en la base de datos
-            rolRepository.save(rolSupVent);
-        }
     }
 }
