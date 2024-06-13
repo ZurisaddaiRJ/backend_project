@@ -18,6 +18,7 @@ public class VistaNotaVentaPedidoEnProcesoService {
     private VistaNotaVentaPedidoEnProcesoRepository vistaNotaVentaPedidoEnProcesoRepository;
 
     public List<VistaNotaVentaPedidoEnProceso> getAllVistaNotaVentaPedidoEnProceso() {
-        return vistaNotaVentaPedidoEnProcesoRepository.findAll();
+        List<VistaNotaVentaPedidoEnProceso> notas_proceso = vistaNotaVentaPedidoEnProcesoRepository.findAll();
+        return notas_proceso;
     }
 }

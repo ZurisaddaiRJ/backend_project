@@ -90,9 +90,17 @@ public class DetalleVentaService {
         // Convertir LocalDate a java.sql.Date
         Date sqlStartDate = Date.valueOf(startDate);
         Date sqlEndDate = Date.valueOf(endDate);
+        List<DetalleVenta> detallesPagados = new ArrayList();
         List<DetalleVenta> detallesVenta = detalleVentaRepository.findByFechaBetween(sqlStartDate, sqlEndDate); 
+        for (DetalleVenta detalleVenta : detallesVenta) {
+            Long estadoPago = detalleVenta.getVenta().getAnticipo().getEstadoPago().getIdEstadoPago();
+            
+            if (estadoPago == 1) {
+                detallesPagados.add(detalleVenta);
+            }
+        }
 
-        return detallesVenta;
+        return detallesPagados;
     }
 
     @Transactional
