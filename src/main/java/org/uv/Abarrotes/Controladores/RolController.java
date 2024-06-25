@@ -26,7 +26,7 @@ import org.uv.Abarrotes.servicio.RolService;
  */
 @Controller
 @RequestMapping("api/roles")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class RolController {
     @Autowired
     private RolService rolService;

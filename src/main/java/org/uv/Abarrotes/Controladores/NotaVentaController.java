@@ -30,7 +30,7 @@ import org.uv.Abarrotes.servicio.PedidoServicio;
  */
 @Controller
 @RequestMapping("api/notasventas")
-@CrossOrigin(origins = "*", allowCredentials = "")
+@CrossOrigin(origins = "*")
 public class NotaVentaController {
 
     @Autowired

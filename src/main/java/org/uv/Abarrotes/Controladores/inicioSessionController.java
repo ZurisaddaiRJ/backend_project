@@ -19,7 +19,7 @@ import org.uv.Abarrotes.servicio.InicioSessionService;
 
 @RestController
 // @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*", allowCredentials = "")
+@CrossOrigin(origins = "*")
 
 public class inicioSessionController {
     @Autowired

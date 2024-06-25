@@ -19,7 +19,7 @@ import org.uv.Abarrotes.servicio.VistaNotaVentaCanceladaService;
  */
 @RestController
 @RequestMapping("/api/vista-nota-venta-cancelada")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class VistaNotaVentaCanceladaController {
     @Autowired
     private VistaNotaVentaCanceladaService vistaNotaVentaCanceladaService;

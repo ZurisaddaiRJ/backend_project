@@ -27,7 +27,7 @@ import org.uv.Abarrotes.servicio.OpcionesRolService;
  */
 @Controller
 @RequestMapping("api/opcionesrol")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class OpcionesRolController {
     @Autowired
     private OpcionesRolService opcionesRolService;

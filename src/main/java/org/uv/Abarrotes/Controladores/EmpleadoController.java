@@ -33,7 +33,7 @@ import org.uv.Abarrotes.servicio.EmpleadoService;
  */
 @Controller
 @RequestMapping("api/empleados")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class EmpleadoController {
     @Autowired
     private EmpleadoService empleadoService;

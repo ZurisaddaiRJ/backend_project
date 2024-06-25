@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.CrossOrigin;
 @Controller
 @RequestMapping("api/estadopedido")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class EstadoPedidoController {
     @Autowired
     private EstadoPedidoService estadoPedidoService;

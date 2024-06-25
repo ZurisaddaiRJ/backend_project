@@ -20,7 +20,7 @@ import org.uv.Abarrotes.servicio.VistaNotaVentaPendienteService;
  */
 @RestController
 @RequestMapping("/api/vista-nota-venta-pendiente")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class VistaNotaVentaPendienteController {
     @Autowired
     private VistaNotaVentaPendienteService vistaNotaVentaPendienteService;

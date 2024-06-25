@@ -18,7 +18,7 @@ import org.uv.Abarrotes.servicio.PedidoServicio;
 
 @Controller
 @RequestMapping("api/pedido")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class PedidoController {
 
     @Autowired

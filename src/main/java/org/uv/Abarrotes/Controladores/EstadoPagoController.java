@@ -14,7 +14,7 @@ import org.uv.Abarrotes.modelos.EstadoPago;
 import org.uv.Abarrotes.servicio.EstadoPagoService;
 
 @RequestMapping("/api/estadopago")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 @RestController
 public class EstadoPagoController {
     @Autowired

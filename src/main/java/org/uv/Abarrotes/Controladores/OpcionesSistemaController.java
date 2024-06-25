@@ -26,7 +26,7 @@ import org.uv.Abarrotes.servicio.OpcionesSistemaService;
  */
 @Controller
 @RequestMapping("api/opcionessistema")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class OpcionesSistemaController {
     @Autowired
     private OpcionesSistemaService opcionesSistemaService;

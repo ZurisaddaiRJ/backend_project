@@ -17,7 +17,7 @@ import org.uv.Abarrotes.servicio.DetallePedidoService;
 
 @Repository
 @RequestMapping("api/detallepedido")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class DetallePedidoController {
     @Autowired
     private DetallePedidoService detallePedidoService;

@@ -28,7 +28,7 @@ import org.uv.Abarrotes.servicio.ProductoService;
  */
 @Controller
 @RequestMapping("api/productos")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class ProductoController {
     @Autowired
     private ProductoService productoService;

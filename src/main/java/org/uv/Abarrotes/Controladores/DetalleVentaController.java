@@ -29,7 +29,7 @@ import org.uv.Abarrotes.servicio.DetalleVentaService;
  */
 @RestController
 @RequestMapping("api/detallesventas")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class DetalleVentaController {
     @Autowired
     private DetalleVentaService detalleventaService;

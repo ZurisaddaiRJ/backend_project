@@ -19,7 +19,7 @@ import org.uv.Abarrotes.servicio.VistaNotaVentaPedidoEnProcesoService;
  */
 @RestController
 @RequestMapping("/api/vista-nota-venta-pedido-en-proceso")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class VistaNotaVentaPedidoEnProcesoController {
     @Autowired
     private VistaNotaVentaPedidoEnProcesoService vistaNotaVentaPedidoEnProcesoService;

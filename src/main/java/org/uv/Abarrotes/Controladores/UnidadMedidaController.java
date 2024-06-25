@@ -29,7 +29,7 @@ import org.uv.Abarrotes.modelos.UnidadMedida;
  */
 @Controller
 @RequestMapping("/api/unidadesMedida")
-@CrossOrigin(origins = "*", allowCredentials = "")
+@CrossOrigin(origins = "*")
 public class UnidadMedidaController {
 
     @Autowired

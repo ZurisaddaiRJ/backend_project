@@ -28,7 +28,7 @@ import org.uv.Abarrotes.servicio.CategoriaService;
 
 @Controller
 @RequestMapping("/api/categorias")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;

@@ -26,7 +26,7 @@ import org.uv.Abarrotes.servicio.ClienteService;
  */
 @Controller
 @RequestMapping("api/clientes")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;

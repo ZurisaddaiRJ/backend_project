@@ -31,7 +31,7 @@ import org.uv.Abarrotes.servicio.MarcaService;
  */
 @RestController
 @RequestMapping("/api/marcas")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class MarcaController {
     @Autowired
     private MarcaService marcaService;

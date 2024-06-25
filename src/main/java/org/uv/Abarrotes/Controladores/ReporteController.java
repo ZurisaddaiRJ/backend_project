@@ -27,7 +27,7 @@ import org.uv.Abarrotes.servicio.ReporteService;
  */
 @Controller
 @RequestMapping("api/reportes")
-@CrossOrigin(origins="*", allowCredentials="")
+@CrossOrigin(origins="*")
 public class ReporteController {
     @Autowired
     private ReporteService reporteService;
