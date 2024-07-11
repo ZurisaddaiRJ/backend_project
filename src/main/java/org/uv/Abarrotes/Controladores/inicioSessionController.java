@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.uv.Abarrotes.modelos.Empleado;
 import org.uv.Abarrotes.servicio.EmpleadoService;
 import org.uv.Abarrotes.servicio.InicioSessionService;
+import org.uv.Abarrotes.util.JwtUtil;
 
 @RestController
 // @RequestMapping("/api/auth")
@@ -26,6 +27,8 @@ public class inicioSessionController {
     private InicioSessionService inicioSessionService;
     @Autowired
     private EmpleadoService empleadoService;
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> credentials) {
@@ -38,12 +41,14 @@ public class inicioSessionController {
             Empleado empleado = empleadoService.obtenerEmpleadoPorUsuario(usuario);
 
             if (empleado != null) {
+                String token = jwtUtil.generateToken(usuario);
                 // Construir la respuesta con el rol, id_empleado y nombre
                 Map<String, Object> response = new HashMap<>();
                 response.put("success", true);
                 response.put("rol", empleado.getRoles().getNombre());
                 response.put("id_empleado", empleado.getIdEmpleado());
                 response.put("nombre", empleado.getNombre());
+                response.put("token", token);
                 return ResponseEntity.ok(response);
             }
         }

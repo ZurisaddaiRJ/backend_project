@@ -23,6 +23,7 @@ import org.uv.Abarrotes.modelos.Empleado;
 import org.uv.Abarrotes.modelos.Rol;
 import org.uv.Abarrotes.repositorio.EmpleadoRepository;
 import org.uv.Abarrotes.repositorio.RolRepository;
+import org.uv.Abarrotes.util.JwtUtil;
 
 /**
  *
@@ -38,6 +39,9 @@ public class EmpleadoService {
 
     @Autowired
     private RolRepository rolRepository;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
 
     public DTOEmpleadoInfo crearEmpleado(@Valid Empleado empleado, String descripcionRol) {
         // Verificar si el rol especificado existe
@@ -49,10 +53,12 @@ public class EmpleadoService {
 
         // Guardar el nuevo empleado en la base de datos
         Empleado empleadoGuardado = empleadoRepository.save(empleado);
+        
+        String token = jwtUtil.generateToken(empleadoGuardado.getNombre());
 
         // Crear y devolver un DTO con la información del empleado guardado
         DTOEmpleadoInfo dto = new DTOEmpleadoInfo(empleadoGuardado);
-
+        dto.setToken(token);
         return dto;
     }
 

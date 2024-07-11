@@ -3,31 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package org.uv.Abarrotes.DTOs;
+
 import org.uv.Abarrotes.modelos.Empleado;
+
 /**
  *
  * @author yacruz
  */
 public class DTOEmpleadoInfo {
-    
+
     private long idEmpleado;
-    
+
     private String nombre;
 
     private String apellidos;
 
     private String correoElectronico;
-    
+
     private String roles;
 
     private Long idRol;  //línea para visualizar el idRol en el front
 
-    
-    public DTOEmpleadoInfo(){
-        
+    private String token;
+
+    public DTOEmpleadoInfo() {
+
     }
-    
-    public DTOEmpleadoInfo(long idEmpleado, String nombre, String apellidos, Long idRol, String correoElectronico, String roles){
+
+    public DTOEmpleadoInfo(long idEmpleado, String nombre, String apellidos, Long idRol, String correoElectronico, String roles) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -35,8 +38,8 @@ public class DTOEmpleadoInfo {
         this.correoElectronico = correoElectronico;
         this.idRol = idRol;
     }
-    
-    public DTOEmpleadoInfo(Empleado empleado){
+
+    public DTOEmpleadoInfo(Empleado empleado) {
         this.idEmpleado = empleado.getIdEmpleado();
         this.nombre = empleado.getNombre();
         this.apellidos = empleado.getApellidos();
@@ -44,7 +47,7 @@ public class DTOEmpleadoInfo {
         this.correoElectronico = empleado.getCorreoElectronico();
         this.idRol = empleado.getRoles().getIdRol();
     }
-    
+
     public long getIdEmpleado() {
         return idEmpleado;
     }
@@ -73,7 +76,7 @@ public class DTOEmpleadoInfo {
         return correoElectronico;
     }
 
-    public void setCorreoElectronico(String correoElectronico){
+    public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
     }
 
@@ -91,5 +94,13 @@ public class DTOEmpleadoInfo {
 
     public void setIdRol(Long idRol) {
         this.idRol = idRol;
-    }   
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
